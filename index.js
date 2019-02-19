@@ -10,7 +10,7 @@ $(document).ready(function() {
 	};
 
 	var onEachFeature =  function(feature, layer) {
-		layer.bindPopup(feature.properties.popupContent)
+		layer.bindPopup(feature.properties.popupContent);
 	}
 
 	var processTexas = function(data) {
@@ -27,8 +27,6 @@ $(document).ready(function() {
 	var addToMap = function(arr) {
 		var json = arr[1];
 		var toAdd = { "type": "Feature", "geometry": JSON.parse(json), "properties": { "popupContent": "<div> " + arr[0] + ": " + arr[2] + "</div>" } };
-		var lowOpacity = 0.2
-		var maxOpacityAt = 10
 
 		if (arr[2] != 0) {
 			L.geoJSON(toAdd, {
