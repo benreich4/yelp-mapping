@@ -17,7 +17,7 @@ $(document).ready(function() {
 		L.geoJSON(JSON.parse(data), {
 			style: { "color": "black", "weight": 1, "fillOpacity": 0 }
 		}).addTo(mymap);
-	}
+	};
 
 	var color = d3.scaleLinear()
 	    .domain([1, 15])
@@ -25,8 +25,8 @@ $(document).ready(function() {
 
 
 	var addToMap = function(arr) {
-		var json = arr[1]
-		var toAdd = { "type": "Feature", "geometry": JSON.parse(json), "properties": { "popupContent": arr[0] + ": " + arr[2] } };
+		var json = arr[1];
+		var toAdd = { "type": "Feature", "geometry": JSON.parse(json), "properties": { "popupContent": "<div> " + arr[0] + ": " + arr[2] + "</div>" } };
 		var lowOpacity = 0.2
 		var maxOpacityAt = 10
 
@@ -39,11 +39,11 @@ $(document).ready(function() {
 	};
 
 	$.ajax({
-        type: "GET",
-        url: "zips.csv",
-        dataType: "text",
-        success: function(data) { processData(data); }
-     });
+		type: "GET",
+		url: "zips.csv",
+		dataType: "text",
+		success: function(data) { processData(data); }
+	});
 
 	$.ajax({
 		type: "GET",
